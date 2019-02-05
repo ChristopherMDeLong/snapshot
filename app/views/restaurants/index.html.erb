@@ -1,0 +1,9 @@
+<ul>
+  <h2 class="heading"> My Restaurants </h2>
+</ul>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+  <div class="rest-name"> <%= restaurant.name %> </div>
+  <% end %>
+</ul>
