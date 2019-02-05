@@ -15,3 +15,81 @@
  *= require foundation_and_overrides
 
  */
+ body{
+   background: url("Restaurants.jpg");
+   background-size: 100% auto;
+   background-position: center;
+ }
+
+ .background{
+   border: solid black;
+   background-color: white;
+   min-height: 100% auto;
+   opacity: .7;
+   margin: 50px;
+ }
+
+ .top-bar{
+   background-color: #718be0;
+   opacity: 1;
+ }
+
+ .sign-up{
+   border-left: 1px solid white;
+   border-right: 1px solid white;
+ }
+
+ .title{
+   color: black;
+   text-align: center;
+   font-size: 72px;
+   text-shadow: -3px 3px 0px white;
+   opacity: 1;
+ }
+
+ .field{
+   color: black;
+   width: 300px;
+ }
+
+ .intro-text{
+  margin: auto;
+  width: 800px;
+  text-align: center;
+  font-size: 38px;
+  color: black;
+  margin-top: 10%;
+}
+
+.service-reviews{
+  margin: auto;
+  width: 1000px;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  margin-top: 40px;
+}
+
+.rest-name{
+  margin: auto;
+  margin-top: 10px;
+  width: 500px;
+  text-align: center;
+  font-size: 24px;
+  border: 3px solid black;
+  color: black;
+}
+.heading{
+  margin: auto;
+  margin-top: 10px;
+  border: 3px solid black;
+  text-align: center;
+  width: 500px;
+}
+.background{
+  border: solid black;
+  background-color: white;
+  min-height: 100%;
+  opacity: .7;
+  margin: 50px;
+}

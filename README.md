@@ -1,4 +1,5 @@
 # README
+[![Codeship Status for ChristopherMDeLong/snapshot](https://app.codeship.com/projects/bab822c0-090e-0137-9eb3-62ad0be07bf4/status?branch=master)](https://app.codeship.com/projects/326101)
 Snapshot
 
 Author: Chris DeLong
