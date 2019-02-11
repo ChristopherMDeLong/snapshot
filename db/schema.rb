@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_183522) do
+ActiveRecord::Schema.define(version: 2019_02_07_141344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "reports", force: :cascade do |t|
+    t.date "date", null: false
+    t.decimal "food_sales", precision: 8, scale: 2, null: false
+    t.decimal "liquor_sales", precision: 8, scale: 2, null: false
+    t.decimal "food_expenses", precision: 8, scale: 2, null: false
+    t.decimal "liquor_expenses", precision: 8, scale: 2, null: false
+    t.decimal "front_house_payroll", precision: 8, scale: 2, null: false
+    t.decimal "back_house_payroll", precision: 8, scale: 2, null: false
+    t.decimal "manager_payroll", precision: 8, scale: 2, null: false
+    t.integer "headcount", null: false
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_reports_on_restaurant_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name", null: false

@@ -2,8 +2,13 @@
   <h2 class="heading"> My Restaurants </h2>
 </ul>
 
-<ul>
+<ul class = "flex-container">
   <% @restaurants.each do |restaurant| %>
-  <div class="rest-name"> <%= restaurant.name %> </div>
+  <div class="rest-name"> <%= link_to restaurant.name, restaurant_path(restaurant) %> </div>
   <% end %>
 </ul>
+<div class="row" align="center">
+<%= link_to(new_restaurant_path) do%>
+  <button>Add New Restaurant</button>
+<%end%>
+</div>
