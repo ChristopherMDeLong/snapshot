@@ -1,0 +1,33 @@
+<h2>Report Form for <%=@restaurant.name%></h2>
+<div class="form">
+<%= form_for [@restaurant, @report] do |f| %>
+  <%= f.label :date %>
+  <%=f.text_field :date %>
+
+  <%= f.label :food_sales %>
+  <%=f.text_field :food_sales %>
+
+  <%= f.label :liquor_sales %>
+  <%=f.text_field :liquor_sales %>
+
+  <%= f.label :food_expenses %>
+  <%=f.text_field :food_expenses %>
+
+  <%= f.label :liquor_expenses %>
+  <%=f.text_field :liquor_expenses %>
+
+  <%= f.label :front_house_payroll %>
+  <%=f.text_field :front_house_payroll %>
+
+  <%= f.label :back_house_payroll %>
+  <%=f.text_field :back_house_payroll %>
+
+  <%= f.label :manager_payroll %>
+  <%=f.text_field :manager_payroll %>
+
+  <%= f.label :headcount %>
+  <%=f.text_field :headcount %>
+
+  <%=f.submit "Add Weekly Data" %>
+<% end %>
+</div>

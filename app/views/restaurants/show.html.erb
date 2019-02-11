@@ -1,0 +1,38 @@
+<div class= "rest-reports">
+<h2>
+  <%= @restaurant.name %>
+</h2>
+
+<h5>
+  Address: <%= @restaurant.address %>
+  <br>City: <%= @restaurant.city %>
+  <br>State: <%= @restaurant.state %>
+  <br>Zip Code: <%= @restaurant.zip %>
+</h5>
+
+<h3>Weekly Reports</h3>
+  <% ytd = 0 %>
+  <% @reports.each do |report| %>
+  <% fcost = report.food_expenses / report.food_sales %>
+  <% lcost = report.liquor_expenses / report.liquor_sales %>
+  <% tsales = report.food_sales + report.liquor_sales %>
+  <% tcost = report.food_expenses + report.liquor_expenses %>
+  <% tlabor = report.front_house_payroll + report.back_house_payroll + report.manager_payroll %>
+  <% ppercent = tcost / tlabor %>
+  <% ytd = ytd + tsales %>
+
+    Week Ending: <%=link_to report.date.strftime("%m/%d/%Y"), report_path(report)%><br>
+    Food Cost: <%= number_to_percentage(fcost * 100, precision: 0) %><br>
+    Liquor Cost: <%= number_to_percentage(lcost * 100, precision: 0)  %><br>
+    Payroll Cost: <%= number_to_percentage(ppercent * 100, precision: 0)  %><br>
+    Total Sales: <%=number_to_currency(tsales)%><br>
+    <br>
+<% end %>
+
+  Total Sales YTD: <%=number_to_currency(ytd)%>
+
+  <p>
+    <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
+  </p>
+
+</div>

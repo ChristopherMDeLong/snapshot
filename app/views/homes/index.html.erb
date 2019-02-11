@@ -1,27 +1,36 @@
-<div className = "row">
-  <div class="title">
-    <br><%= "Management Made Simple" %>
+
+  <div className = "row">
+    <div class="title">
+      <br><%= "Management Made Simple" %><br>
+      <%= link_to(restaurants_path) do%>
+        <button>View My Restaurants</button>
+      <%end%>
+      <br><br>
+    </div>
+
+  <div className = "row">
+    <ul class = "flex-container">
+      <li class="quote_box"><br><br><%= "\"Snapshot is giving us more accurate and real-time numbers, which allows us to see where we need to adjust price points.\""%><br><br>
+        <%= "Chris DeLong" %><br>
+        <%="General Manager" %><br>
+        <%= "Longshore Restaurant" %>
+      </li>
+      <li class="quote_box"><br><br><%= "\"When asked what our pour costs are running, its great knowing for sure by just a couple clicks\"" %><br><br><br>
+        <%= "Katie Johnson" %><br>
+        <%= "Director of Food and Beverage" %><br>
+        <%= "Knots Landing Bar & Grill" %>
+      </li>
+      <li class="quote_box"><br><br><%= "\"Snapshot is giving us more accurate and real-time numbers, which allows us to see where we need to adjust price points.\""%><br><br>
+        <%= "Andrew Wright" %><br>
+        <%="General Manager" %><br>
+        <%= "Arnold's Restaurant" %>
+      </li>
+    </ul>
+  </div>
+  <div className = "row">
+    <div class = "intro-text">
+      <%= "Take control of your business by tracking fundamentals and public perception" %>
+    </div>
   </div>
 </div>
-
-<div className = "row">
-  <div class = "intro-text">
-    <%= "Take control of your business by tracking fundamentals and public perception" %>
-  </div>
-</div>
-
-<div className = "row">
-  <div class = "service-reviews">
-    <%= "\"Snapshot is giving us more accurate and real-time numbers, which allows us to see where we need to adjust price points.\""%>
-    <%= "Chris DeLong, General Manager"%><br>
-    <%= "Longshore Restaurant"%>
-  </div>
-</div>
-
-<div className = "row">
-  <div class = "service-reviews">
-    <%= "\"When asked what our pour costs are running, its great knowing for sure by just a couple clicks\"" %><br>
-    <%= "Katie Johnson, Director of Food and Beverage" %><br>
-    <%= "Knots Landing Bar & Grill"%>
-  </div>
 </div>
