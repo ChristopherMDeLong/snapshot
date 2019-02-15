@@ -3,6 +3,14 @@ class Api::V1::ReportsController < ApplicationController
 
     def show
       report = Report.find(params[:id])
-      render json: report
+      restaurant = report.restaurant
+      yelp_parser = YelpParser.new
+
+      yelp_parser.match(restaurant.name, restaurant.address, restaurant.city, restaurant.state, "US")
+      yelp_parser.get_reviews()
+
+      yelp_data = yelp_parser.reviews_from_yelp
+      # we have both the yelp data and the db data. How do we want to show those to the user?
+      render json: {report: report, restaurant: restaurant, yelp_data: yelp_data,  }
     end
 end
