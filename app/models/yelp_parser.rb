@@ -1,9 +1,7 @@
 require 'json'
 require 'httparty'
-require 'pry'
 require 'optparse'
 require 'http'
-
 
 API_HOST = "https://api.yelp.com"
 SEARCH_PATH = "/v3/businesses/matches"
