@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require chartkick
 //= require Chart.bundle
+//= require chartkick
 //= require activestorage
 //= require_tree .
 

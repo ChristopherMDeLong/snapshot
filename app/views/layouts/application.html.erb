@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <%= javascript_include_tag "vendor/modernizr" %>
-
+    <%= javascript_include_tag 'http://www.google.com/jsapi', 'chartkick' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -32,7 +32,7 @@
 
   <ul class="right">
   <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
+    <div class="new-flash flash flash-<%= key %>">
       <%= value %><br>
     </div>
   <%- end -%>
