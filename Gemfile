@@ -63,4 +63,5 @@ gem 'carrierwave'
 gem 'fog'
 gem 'httparty'
 gem 'http'
-gem "chartkick"
+gem 'chartkick', '~>2.2.0'
+gem 'groupdate'

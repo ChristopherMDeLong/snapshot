@@ -1,4 +1,7 @@
 
+<% data = [] %>
+
+
 <div class= "rest-reports">
 
   <div class="rest-name">
@@ -8,7 +11,7 @@
   </div>
 
 <h3>Weekly Reports</h3>
-  <div style="overflow-y: scroll; width: 350px; height:350px; border: solid black; padding: 10px; class: row small-6 ">
+  <div style="overflow-y: scroll; width: 400px; height:350px; border: solid black; padding: 10px; class: row small-6 ">
     <% ytd = 0 %>
     <% avg = 0 %>
     <% theadcount = 0 %>
@@ -21,6 +24,7 @@
       <% ppercent = number_to_percentage((tlabor / tsales) * 100, precision: 0)  %>
       <% ytd = ytd + tsales %>
       <% theadcount = theadcount + report.headcount %>
+      <% data << [report.date, tsales] %>
 
       Week Ending: <%=link_to report.date.strftime("%m/%d/%Y"), report_path(report)%><br>
       Food Cost: <%= fcost %><br>
@@ -39,5 +43,10 @@
   <p>
     <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
   </p>
+
 </div>
-<%= line_chart @reports.group(:id) %>
+
+<div class="totals">
+  <%= "Total Weekly Sales" %>
+<%= line_chart data %>
+</div>

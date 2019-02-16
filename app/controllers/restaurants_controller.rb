@@ -3,7 +3,7 @@ before_action :authorize_user
 
   def index
     if current_user
-      @restaurants = Restaurant.all
+      @restaurants = @current_user.restaurants.all
       render :index
     else
       redirect_to root_path
@@ -21,7 +21,7 @@ before_action :authorize_user
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
+    @restaurant.user = current_user
     if @restaurant.save
       flash[:notice] = "Restaurant added successfully!"
       redirect_to restaurants_path
