@@ -11,6 +11,6 @@ class Api::V1::ReportsController < ApplicationController
 
       yelp_data = yelp_parser.reviews_from_yelp
       # we have both the yelp data and the db data. How do we want to show those to the user?
-      render json: {report: report, restaurant: restaurant, yelp_data: yelp_data,  }
+      render json: {report: report, restaurant: restaurant, yelp_data: yelp_data}
     end
 end

@@ -23,6 +23,7 @@ class ReportsController < ApplicationController
     end
   end
 
+
   private
 
   def report_params

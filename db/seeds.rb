@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 restaurants = [
   {
+    user_id: 1,
     name: "Longshore",
     address: "1077 Main Street",
     city: "Chatham",
@@ -14,6 +15,7 @@ restaurants = [
     zip: "02633"
   },
   {
+    user_id: 1,
     name: "Arnold's",
     address: "3580 US-6",
     city: "Eastham",
@@ -21,6 +23,7 @@ restaurants = [
     zip: "02642"
   },
   {
+    user_id: 1,
     name: "Chatham Squire",
     address: "487 Main Street",
     city: "Chatham",
@@ -28,6 +31,7 @@ restaurants = [
     zip: "02633"
   },
   {
+    user_id: 1,
     name: "Del Mar",
     address: "907 Main Street",
     city: "Chatham",
@@ -37,6 +41,7 @@ restaurants = [
 ]
 restaurants.each do |restaurant|
   Restaurant.create!(
+    user_id: restaurant[:user_id],
     name: restaurant[:name],
     address: restaurant[:address],
     city: restaurant[:city],

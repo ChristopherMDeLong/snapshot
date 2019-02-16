@@ -17,6 +17,13 @@ const ReportInfoTile = props => {
         <h5>Total Sales: ${props.total}</h5>
         <h5>Total Payroll: ${props.totalPayroll}</h5>
         <h5>Total Expenses: ${props.totalExpenses}</h5>
+        <h5 className="yelp">Yelp Reviews</h5>
+          <p>{props.rating[0]} Stars<br />
+             {props.text[0]}<br />
+             {props.rating[1]} Stars<br />
+             {props.text[1]}<br />
+             {props.rating[2]} Stars<br />
+             {props.text[2]}</p>
       </div>
   );
 };

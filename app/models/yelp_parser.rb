@@ -42,6 +42,13 @@ class YelpParser
     # use this yelp id to make a yelp request for the reviews of a specific restaurant
     response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get("https://api.yelp.com/v3/businesses/#{id}/reviews")
 
-    @reviews_from_yelp = response.parse["reviews"]
+    rating_array = []
+    text_array = []
+    response.parse["reviews"].each do |review|
+      rating_array << review["rating"]
+      text_array << review["text"]
+    end
+    @reviews_from_yelp << rating_array
+    @reviews_from_yelp << text_array
   end
 end
