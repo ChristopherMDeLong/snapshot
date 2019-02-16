@@ -18,7 +18,8 @@ class ReportContainer extends Component {
       totalSales:0,
       totalPayroll:0,
       totalExpenses:0,
-      yelpReviews:[]
+      yelpRating:[],
+      yelpText:[]
     };
 
     this.fetchReportData=this.fetchReportData.bind(this)
@@ -57,7 +58,8 @@ class ReportContainer extends Component {
         address1: body.restaurant.address,
         city: body.restaurant.city,
         state: body.restaurant.state,
-        yelpReviews: body.yelp_data
+        yelpRating: body.yelp_data[0],
+        yelpText: body.yelp_data[1]
       });
       this.addAction()
     })
@@ -89,7 +91,8 @@ class ReportContainer extends Component {
           total={this.state.totalSales.toFixed(2)}
           totalPayroll={this.state.totalPayroll.toFixed(2)}
           totalExpenses={this.state.totalExpenses.toFixed(2)}
-          reviews={this.state.yelpReviews}
+          rating={this.state.yelpRating}
+          text={this.state.yelpText}
           />
         <div className="column small-6 charts-move">
           <ChartsContainer

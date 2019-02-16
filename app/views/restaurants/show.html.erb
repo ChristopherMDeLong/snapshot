@@ -13,29 +13,31 @@
     <% avg = 0 %>
     <% theadcount = 0 %>
     <% @reports.each do |report| %>
-      <% fcost = report.food_expenses / report.food_sales %>
-      <% lcost = report.liquor_expenses / report.liquor_sales %>
+      <% fcost = number_to_percentage((report.food_expenses / report.food_sales) * 100, precision: 0) %>
+      <% lcost = number_to_percentage((report.liquor_expenses / report.liquor_sales) * 100, precision: 0) %>
       <% tsales = report.food_sales + report.liquor_sales %>
       <% tcost = report.food_expenses + report.liquor_expenses %>
       <% tlabor = report.front_house_payroll + report.back_house_payroll + report.manager_payroll %>
-      <% ppercent = tlabor / tsales %>
+      <% ppercent = number_to_percentage((tlabor / tsales) * 100, precision: 0)  %>
       <% ytd = ytd + tsales %>
       <% theadcount = theadcount + report.headcount %>
 
       Week Ending: <%=link_to report.date.strftime("%m/%d/%Y"), report_path(report)%><br>
-      Food Cost: <%= number_to_percentage(fcost * 100, precision: 0) %><br>
-      Liquor Cost: <%= number_to_percentage(lcost * 100, precision: 0)  %><br>
-      Payroll Cost: <%= number_to_percentage(ppercent * 100, precision: 0)  %><br>
+      Food Cost: <%= fcost %><br>
+      Liquor Cost: <%= lcost %><br>
+      Payroll Cost: <%= ppercent %><br>
       Total Sales: <%=number_to_currency(tsales)%><br>
       <br>
     <% end %>
   </div>
-  <% avg = ytd / theadcount %>
+  <% if(@reports.length > 0) %>
+    <% avg = ytd / theadcount %>
+  <% end %>
+
   Average Amount Spent per Person: <%=number_to_currency(avg)%><br>
   Total Sales YTD: <%=number_to_currency(ytd)%>
-
   <p>
     <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
   </p>
-
 </div>
+<%= line_chart @reports.group(:id) %>

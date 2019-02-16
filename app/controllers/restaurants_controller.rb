@@ -2,7 +2,12 @@ class RestaurantsController < ApplicationController
 before_action :authorize_user
 
   def index
-    @restaurants = Restaurant.all
+    if current_user
+      @restaurants = Restaurant.all
+      render :index
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -21,7 +26,7 @@ before_action :authorize_user
       flash[:notice] = "Restaurant added successfully!"
       redirect_to restaurants_path
     else
-      flash[:notice] = @restaurant.errors.full_messages.join(", ")
+      flash[:notice] = @restaurant.errors.full_messages.join(". \n")
       render :new
     end
   end
@@ -29,7 +34,7 @@ before_action :authorize_user
   private
 
   def restaurant_params
-		params.require(:restaurant).permit(:name, :address, :city, :state, :zip)
+		params.require(:restaurant).permit(:user_id, :name, :address, :city, :state, :zip)
 	end
 
   def authorize_user

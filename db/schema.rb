@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_141344) do
   end
 
   create_table "restaurants", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.string "address", null: false
     t.string "city", null: false
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_141344) do
     t.string "zip", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

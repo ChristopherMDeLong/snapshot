@@ -124,18 +124,26 @@
    border-radius: 10px;
    opacity: .95;
  }
+
 .charts-move {
-  transform: translate(290px) translateY(-390px);
+  transform: translate(290px) translateY(-620px);
 }
+
  .rest-show{
    margin: auto;
-   margin-top: 225px;
    border: medium solid grey;
+   margin-top: 10px;
    width: 200%;
+   height: 700px;
    padding: 30px;
    background-color: #E9E6E5;
    border-radius: 10px;
    opacity: .95;
+ }
+
+ .reviews{
+   width: 100%;
+   background-color: #E9E6E5;
  }
 
  .tagline{
@@ -163,6 +171,12 @@
    border-left: 1px solid white;
    border-right: 1px solid white;
  }
+
+.yelp{
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+}
 
  .weekly-box{
     list-style-type: none;
