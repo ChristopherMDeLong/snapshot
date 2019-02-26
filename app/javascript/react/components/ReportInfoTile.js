@@ -5,7 +5,7 @@ const ReportInfoTile = props => {
   return(
 
       <div className="rest-show">
-        <h5>Date: {props.date}</h5>
+        <h5 className="date">Date: {props.date}</h5>
         <h5>Food Sales: ${props.foodSales}</h5>
         <h5>Liquor Sales: ${props.liquorSales}</h5>
         <h5>Food Expenses: ${props.foodExpenses}</h5>

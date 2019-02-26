@@ -14,12 +14,4 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
-    namespace :v1 do
-      resources :restaurants, only: [:show] do
-        get "/matches", to: "restaurants#matches"
-      end
-    end
-  end
-
 end

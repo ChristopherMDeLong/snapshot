@@ -6,10 +6,11 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag 'http://www.google.com/jsapi', 'chartkick' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= javascript_include_tag 'http://www.google.com/jsapi', 'chartkick' %>
   <div class="background">
   <nav class="top-bar">
     <ul class="title-area">
