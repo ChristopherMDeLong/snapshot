@@ -1,12 +1,20 @@
 class ReportsController < ApplicationController
 
   def new
-    @restaurant= Restaurant.find(params[:restaurant_id])
-    @report = Report.new()
+    if current_user
+      @restaurant= Restaurant.find(params[:restaurant_id])
+      @report = Report.new()
+    else
+      redirect_to root_path
+    end
   end
 
   def show
-    @report = Report.find(params[:id])
+    if current_user
+      @report = Report.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -29,5 +37,4 @@ class ReportsController < ApplicationController
   def report_params
   	params.require(:report).permit(:restaurant_id, :date, :food_sales, :food_expenses, :liquor_sales, :liquor_expenses, :headcount, :front_house_payroll, :back_house_payroll, :manager_payroll)
 	end
-
 end

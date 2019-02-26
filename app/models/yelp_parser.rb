@@ -16,8 +16,6 @@ class YelpParser
     @reviews_from_yelp = []
   end
 
-
-
   def match(name, address1, city, state, country)
     url = "#{API_HOST}#{SEARCH_PATH}"
     params = {
@@ -30,16 +28,11 @@ class YelpParser
 
     response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get(url, params: params)
     @restaurant_data = response.parse
-
-    # currently this yelp request is not set for error handling and assumes that the first restaurant that is returned is the correct restaurant
   end
 
 
   def get_reviews()
     id = @restaurant_data["businesses"][0]["id"]
-
-    # at this point, @data["business"][0]["id"] should give you the yelp id for the restaurant
-    # use this yelp id to make a yelp request for the reviews of a specific restaurant
     response = HTTP.auth("Bearer #{ENV["API_KEY"]}").get("https://api.yelp.com/v3/businesses/#{id}/reviews")
 
     rating_array = []

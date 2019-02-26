@@ -11,8 +11,12 @@ before_action :authorize_user
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
-    @reports = @restaurant.reports
+    if current_user
+      @restaurant = Restaurant.find(params[:id])
+      @reports = @restaurant.reports
+    else
+      redirect_to root_path
+    end
   end
 
   def new
