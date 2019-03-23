@@ -43,7 +43,6 @@ class ReportContainer extends Component {
     })
     .then(response=> response.json())
     .then(body => {
-      debugger
       this.setState({
         restaurantId: body.report.restaurant_id,
         date: body.report.date,

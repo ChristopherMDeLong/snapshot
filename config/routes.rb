@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :restaurants do
-    resources :reports, only: [:create, :new]
+    resources :reports, only: [:create, :new, :edit, :update, :destroy]
   end
-  resources :reports, only: [:show]
+
+  resources :reports, only: [:show, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :api do
