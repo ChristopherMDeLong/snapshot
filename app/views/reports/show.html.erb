@@ -1,1 +1,6 @@
 <div id="app"></div>
+<div class="update">
+  <%= link_to 'Edit Weekly Report', edit_restaurant_report_path(@report) %><br/>
+
+  <%= link_to 'Delete Weekly Report', report_path(@report), :data => { :confirm => "Are you Sure?", :method => "delete" } %>
+</div>
