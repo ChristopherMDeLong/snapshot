@@ -23,7 +23,6 @@ class ReportContainer extends Component {
     };
 
     this.fetchReportData=this.fetchReportData.bind(this)
-    this.addAction=this.addAction.bind(this)
   }
 
   componentDidMount(){
@@ -53,6 +52,9 @@ class ReportContainer extends Component {
         frontHousePayroll:body.report.front_house_payroll,
         backHousePayroll:body.report.back_house_payroll,
         managerPayroll:body.report.manager_payroll,
+        totalSales:body.sales_totals,
+        totalPayroll:body.payroll_totals,
+        totalExpenses:body.expense_totals,
         headcount:body.report.headcount,
         name: body.restaurant.name,
         address1: body.restaurant.address,
@@ -61,15 +63,6 @@ class ReportContainer extends Component {
         yelpRating: body.yelp_data[0],
         yelpText: body.yelp_data[1]
       });
-      this.addAction()
-    })
-  }
-
-  addAction(){
-    this.setState({
-      totalSales: parseFloat(this.state.foodSales) + parseFloat(this.state.liquorSales),
-      totalPayroll:parseFloat(this.state.frontHousePayroll) + parseFloat(this.state.backHousePayroll) + parseFloat(this.state.managerPayroll),
-      totalExpenses:parseFloat(this.state.foodExpenses) + parseFloat(this.state.liquorExpenses)
     })
   }
 
@@ -88,9 +81,9 @@ class ReportContainer extends Component {
           backHousePayroll={this.state.backHousePayroll}
           managerPayroll={this.state.managerPayroll}
           headcount={this.state.headcount}
-          total={this.state.totalSales.toFixed(2)}
-          totalPayroll={this.state.totalPayroll.toFixed(2)}
-          totalExpenses={this.state.totalExpenses.toFixed(2)}
+          total={this.state.totalSales}
+          totalPayroll={this.state.totalPayroll}
+          totalExpenses={this.state.totalExpenses}
           rating={this.state.yelpRating}
           text={this.state.yelpText}
           />
