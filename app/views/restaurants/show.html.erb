@@ -41,10 +41,12 @@
   Average Amount Spent per Person: <%=number_to_currency(avg)%><br>
   Total Sales YTD: <%=number_to_currency(ytd)%>
   <p>
-    <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
+    <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %><br/>
+    <%= link_to 'Edit Restaurant Details', edit_restaurant_path(@restaurant) %><br/>
   </p>
 
 </div>
+
 
 <div class="totals">
   <%= "Total Weekly Sales" %>
