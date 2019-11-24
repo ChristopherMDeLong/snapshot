@@ -1,7 +1,7 @@
 <div class="form">
 <%= form_for [@restaurant, @report] do |f| %>
   <%= f.label :date %>
-  <%=f.text_field :date %>
+  <%=f.date_field :date %>
 
   <%= f.label :food_sales %>
   <%=f.text_field :food_sales %>
