@@ -14,7 +14,13 @@
   <div style="overflow-y: scroll; width: 400px; height:350px; border: solid black; padding: 10px; class: row small-6 ">
     <% ytd = 0 %>
     <% avg = 0 %>
+    <% tfood_expense = 0 %>
+    <% tfood_sales = 0 %>
+    <% tliquor_expense = 0 %>
+    <% tliquor_sales = 0 %>
+    <% tpayroll = 0 %>
     <% theadcount = 0 %>
+
     <% @reports.each do |report| %>
       <% fcost = number_to_percentage((report.food_expenses / report.food_sales) * 100, precision: 0) %>
       <% lcost = number_to_percentage((report.liquor_expenses / report.liquor_sales) * 100, precision: 0) %>
@@ -24,6 +30,11 @@
       <% ppercent = number_to_percentage((tlabor / tsales) * 100, precision: 0)  %>
       <% ytd = ytd + tsales %>
       <% theadcount = theadcount + report.headcount %>
+      <% tfood_sales = tfood_sales + report.food_sales %>
+      <% tfood_expense = tfood_expense + report.food_expenses %>
+      <% tliquor_expense = tliquor_expense + report.liquor_expenses%>
+      <% tliquor_sales = tliquor_sales + report.liquor_sales%>
+      <% tpayroll = tpayroll + tlabor %>
       <% data << [report.date, tsales] %>
 
       Week Ending: <%=link_to report.date.strftime("%m/%d/%Y"), report_path(report)%><br>
@@ -38,15 +49,21 @@
     <% avg = ytd / theadcount %>
   <% end %>
 
-  Average Amount Spent per Person: <%=number_to_currency(avg)%><br>
-  Total Sales YTD: <%=number_to_currency(ytd)%>
+  Average Amount Spent per Person: <%=number_to_currency(avg)%>
+  <br>Total Sales: <%=number_to_currency(ytd)%>
+  <% if(@reports.length > 0) %>
+    <br>Total Food Cost: <%=number_to_percentage((tfood_expense / tfood_sales) * 100, precision: 0) %>
+    <br>Total Liquor Cost: <%=number_to_percentage((tliquor_expense / tliquor_sales) * 100, precision: 0) %>
+    <br>Total Labor Cost: <%=number_to_percentage((tpayroll / ytd) * 100, precision: 0) %>
+  <% end %>
   <p>
     <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
   </p>
 
 </div>
-
-<div class="totals">
-  <%= "Total Weekly Sales" %>
-<%= line_chart data %>
-</div>
+<% if(@reports.length > 0) %>
+  <div class="totals">
+    <%= "Total Weekly Sales" %>
+    <%= line_chart data %>
+  </div>
+<% end %>
