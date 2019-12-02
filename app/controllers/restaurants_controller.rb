@@ -10,6 +10,32 @@ before_action :authorize_user
     end
   end
 
+  def edit
+    if current_user
+      @restaurant = Restaurant.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update(restaurant_params)
+    if @restaurant.save
+      flash[:notice] = "Restaurant updated successfully!"
+      redirect_to @restaurant
+    else
+      flash[:notice] = @restaurant.errors.full_messages.join(", ")
+      render :edit
+    end
+  end
+
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    redirect_to root_path
+  end
+
   def show
     if current_user
       @restaurant = Restaurant.find(params[:id])

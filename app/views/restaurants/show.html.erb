@@ -57,7 +57,8 @@
     <br>Total Labor Cost: <%=number_to_percentage((tpayroll / ytd) * 100, precision: 0) %>
   <% end %>
   <p>
-    <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %>
+    <%= link_to "Add Weekly Report", new_restaurant_report_path(@restaurant) %><br/>
+    <%= link_to 'Edit Restaurant Details', edit_restaurant_path(@restaurant) %><br/>
   </p>
 
 </div>

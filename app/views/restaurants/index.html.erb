@@ -8,7 +8,9 @@
     <div>
       <%= link_to restaurant.name, restaurant_path(restaurant)%><br>
       <%= restaurant.address %><br>
-      <%= restaurant.city %>
+      <%= restaurant.city %><br/>
+      <%= link_to 'Edit Restaurant', edit_restaurant_path(restaurant) %><br/>
+      <%= link_to 'Delete Restaurant', restaurant_path(restaurant), :data => { :confirm => "Are you Sure?", :method => "delete" } %>
     </div>
     <% end %>
   </ul>
@@ -18,4 +20,5 @@
     <button>Add New Restaurant</button>
     <%end%>
   </div>
+
 </div>
